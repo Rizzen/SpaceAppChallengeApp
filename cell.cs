@@ -10,9 +10,9 @@ namespace ConsoleApplication4
     class Cell
     {
         Color colRed = Color.FromArgb(40, Color.Red);
-        Color colYel = Color.FromArgb(40, Color.Yellow);
+        Color colYel = Color.FromArgb(60, Color.Yellow);
         Color colOran = Color.FromArgb(40, Color.Orange);
-        Color colDarkOrange = Color.FromArgb(80, Color.DarkOrange);
+        Color colDarkOrange = Color.FromArgb(100, Color.DarkOrange);
         Color colBrown = Color.FromArgb(40, Color.Brown);
         Color colGreen = Color.FromArgb(40, Color.Green);
         Color colBlue = Color.FromArgb(40, Color.Blue);
@@ -38,18 +38,27 @@ namespace ConsoleApplication4
         /// from 1 to 5, 1 - highest
         /// in fact - 2, 1.6, 1, 0.6, 0.2
         /// </summary>
-        public int CoverDangerClass;
+        public float CoverDangerClass;
 
         
         //итоговый коэффициент
         public float FireRate = 0;
 
-
-        public Cell (int _x, int _y, int _type, bool _isFire, int _windPower, int _windDir, int _CoverDangerClass)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="_x">X coordinate</param>
+        /// <param name="_y">Y coordinate</param>
+        /// <param name="_type"></param>
+        /// <param name="_isFire">is there already fire</param>
+        /// <param name="_windPower">wind speed</param>
+        /// <param name="_windDir">wind direction</param>
+        /// <param name="_CoverDangerClass">Class of Dangerous</param>
+        public Cell (int _x, int _y, int _type, bool _isFire, int _windPower, int _windDir, float _CoverDangerClass)
         {
             X = _x;
             Y = _y;
-            Type = _type;
+            //Type = _type;
             IsFire = _isFire;
             WindPower = _windPower;
             WindDir = _windDir;
@@ -101,35 +110,35 @@ namespace ConsoleApplication4
             {
                 case 1:
                     int i = 0;
-                    while (i < WindPower) { if (X - i >= 0 && Y - i >= 0) { grid[X - i, Y - i].FireRate += 3000f; i++; Console.WriteLine($"probability of {X-i} - {Y-i} is now  {grid[X - i, Y - i].FireRate}"); } }
+                    while (i < WindPower) { if (X - i >= 0 && Y - i >= 0) { grid[X - i, Y - i].FireRate += 3500f; i++; Console.WriteLine($"FireRate of {X-i} - {Y-i} is now  {grid[X - i, Y - i].FireRate}"); } }
                     break;
                 case 2:
                     i = 0;
-                    while (i < WindPower) { if (X - i >= 0 && Y - i >= 0) { grid[X, Y - i].FireRate += 3000f; i++; Console.WriteLine($"probability of {X} - {Y - i} is now  {grid[X, Y - i].FireRate}"); } }
+                    while (i < WindPower) { if (X - i >= 0 && Y - i >= 0) { grid[X, Y - i].FireRate += 3500f; i++; Console.WriteLine($"FireRate of {X} - {Y - i} is now  {grid[X, Y - i].FireRate}"); } }
                     break;
                 case 3:
                     i = 0;
-                    while (i < WindPower) { if (X + i <= gridX && Y - i >= 0) { grid[X + i, Y - i].FireRate += 3000f; i++; Console.WriteLine($"probability of {X + i} - {Y - i} is now  {grid[X + i, Y - i].FireRate}"); } }
+                    while (i < WindPower) { if (X + i <= gridX && Y - i >= 0) { grid[X + i, Y - i].FireRate += 3500f; i++; Console.WriteLine($"FireRate of {X + i} - {Y - i} is now  {grid[X + i, Y - i].FireRate}"); } }
                     break;
                 case 4:
                     i = 0;
-                    while (i < WindPower) { if (X + i <= gridX && Y - i >= 0) { grid[X + i, Y].FireRate += 3000f; i++; Console.WriteLine($"probability of {X + i} - {Y} is now  {grid[X + i, Y].FireRate}"); } }
+                    while (i < WindPower) { if (X + i <= gridX && Y - i >= 0) { grid[X + i, Y].FireRate += 3500f; i++; Console.WriteLine($"FireRate of {X + i} - {Y} is now  {grid[X + i, Y].FireRate}"); } }
                     break;
                 case 5:
                     i = 0;
-                    while (i < WindPower) { if (X + i <= gridX && Y + i <= gridY) { grid[X + i, Y + i].FireRate += 3000f; i++; Console.WriteLine($"probability of {X + i} - {Y + i} is now  {grid[X + i, Y + i].FireRate}"); } }
+                    while (i < WindPower) { if (X + i <= gridX && Y + i <= gridY) { grid[X + i, Y + i].FireRate += 3500f; i++; Console.WriteLine($"FireRate of {X + i} - {Y + i} is now  {grid[X + i, Y + i].FireRate}"); } }
                     break;
                 case 6:
                     i = 0;
-                    while (i < WindPower) { if (X + i <= gridX && Y + i <= gridY) { grid[X, Y + i].FireRate += 3000f; i++; Console.WriteLine($"probability of {X} - {Y + i} is now  {grid[X, Y + i].FireRate}"); } }
+                    while (i < WindPower) { if (X + i <= gridX && Y + i <= gridY) { grid[X, Y + i].FireRate += 3500f; i++; Console.WriteLine($"FireRate of {X} - {Y + i} is now  {grid[X, Y + i].FireRate}"); } }
                     break;
                 case 7:
                     i = 0;
-                    while (i < WindPower) { if (X - i >= 0 && Y + i <= gridY) { grid[X - i, Y + i].FireRate += 3000f; i++; Console.WriteLine($"probability of {X - i} - {Y + i} is now  {grid[X - i, Y + i].FireRate}"); } }
+                    while (i < WindPower) { if (X - i >= 0 && Y + i <= gridY) { grid[X - i, Y + i].FireRate += 3500f; i++; Console.WriteLine($"FireRate of {X - i} - {Y + i} is now  {grid[X - i, Y + i].FireRate}"); } }
                     break;
                 case 8:
                     i = 0;
-                    while (i < WindPower) { if (X - i >= 0 && Y + i <= gridY) { grid[X - i, Y].FireRate += 3000f; i++; Console.WriteLine($"probability of {X - i} - {Y} is now  {grid[X - i, Y].FireRate}"); } }
+                    while (i < WindPower) { if (X - i >= 0 && Y + i <= gridY) { grid[X - i, Y].FireRate += 3500f; i++; Console.WriteLine($"FireRate of {X - i} - {Y} is now  {grid[X - i, Y].FireRate}"); } }
                     break;
             }
         }

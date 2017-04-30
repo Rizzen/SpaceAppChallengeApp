@@ -29,19 +29,86 @@ namespace ConsoleApplication4
             {
                 for (int i = 0; i < gridX; i++)
                 {
-                    if (i>450 && i<500 && j>450 && j <500)
+                    if (i > 450 && i < 500 && j > 450 && j < 500)
                     {
-                        grid[i, j] = new Cell(i, j, 1, true, 90, 7,3);
-                        if ((i == 451 || i == 499 || j== 451 || j == 499))
-
-                        Fire.Add(grid[i, j]);
+                        grid[i, j] = new Cell(i, j, 1, true, 20, 7, 3);
+                        if (i == 451 || i == 499 || j == 451 || j == 499)
+                        {
+                            Fire.Add(grid[i, j]);
+                        }
                     }
-                    else
+                    //bioms
+                    else if (i > 0 && i < 306 && j > 0 && j < 234)
                     {
-                        grid[i, j] = new Cell(i, j, 1, false, 15, 8,3);
+                        grid[i, j] = new Cell(i, j, 1, false, 15, 8, 2f);
                         grid[i, j].CalcRate();
                     }
-                    
+                    else if (i >= 306 && i < 612 && j > 0 && j < 234)
+                    {
+                        grid[i, j] = new Cell(i, j, 1, false, 15, 8, 1f);
+                        grid[i, j].CalcRate();
+                    }
+                    else if (i >= 612 && i < gridX && j > 0 && j <= 234)
+                    {
+                        grid[i, j] = new Cell(i, j, 1, false, 15, 8, 1.6f);
+                        grid[i, j].CalcRate();
+                    }
+                    //вторая строка
+                    else if (i >= 0 && i < 306 && j >= 234 && j < 468)
+                    {
+                        grid[i, j] = new Cell(i, j, 1, false, 15, 8, 0.6f);
+                        grid[i, j].CalcRate();
+                    }
+                    else if (i >= 306 && i < 612 && j >= 234 && j < 468)
+                    {
+                        grid[i, j] = new Cell(i, j, 1, false, 15, 8, 0.2f);
+                        grid[i, j].CalcRate();
+                    }
+                    else if (i >= 612 && i < gridX && j >= 234 && j < 468)
+                    {
+                        grid[i, j] = new Cell(i, j, 1, false, 15, 8, 2f);
+                        grid[i, j].CalcRate();
+                    }
+                    //третья строка
+                    else if (i >= 0 && i < 306 && j >= 468 && j < 702)
+                    {
+                        grid[i, j] = new Cell(i, j, 1, false, 15, 8, 2f);
+                        grid[i, j].CalcRate();
+                    }
+                    else if (i >= 306 && i < 612 && j >= 468 && j < 702)
+                    {
+                        grid[i, j] = new Cell(i, j, 1, false, 15, 8, 1f);
+                        grid[i, j].CalcRate();
+                    }
+                    else if (i >= 612 && i < gridX && j >= 234 && j < 468)
+                    {
+                        grid[i, j] = new Cell(i, j, 1, false, 15, 8, 2f);
+                        grid[i, j].CalcRate();
+                    }
+                    //последняя строка
+                    else if (i >= 0 && i < 306 && j >= 702 && j < gridY)
+                    {
+                        grid[i, j] = new Cell(i, j, 1, false, 15, 8, 0.6f);
+                        grid[i, j].CalcRate();
+                    }
+                    else if (i >= 306 && i < 612 && j >= 702 && j < gridY)
+                    {
+                        grid[i, j] = new Cell(i, j, 1, false, 15, 8, 0.2f);
+                        grid[i, j].CalcRate();
+                    }
+
+                    else //(i >= 612 && i < gridX && j >= 702 && j < gridY)
+                    {
+                        grid[i, j] = new Cell(i, j, 1, false, 15, 8, 1f);
+                        grid[i, j].CalcRate();
+                    }
+                    //город
+                    if (i >= 326 && i < 357 && j >= 644 && j < 658)
+                    {
+                        grid[i, j] = new Cell(i, j, 1, false, 15, 8, 2f);
+                        grid[i, j].CalcRate();
+                    }
+
                 }
             }
 
